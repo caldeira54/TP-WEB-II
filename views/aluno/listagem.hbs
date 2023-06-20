@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Serviços</title>
+</head>
+
+<body>
+    <h3>Lista de Alunos</h3>
+
+    {{#each aluno}}
+    <div class="container">
+        <div>
+            <p>{{this.nome}}</p>
+            <p>{{this.idade}}</p>
+            <p>{{this.endereco}}</p>
+        </div>
+
+        <div>
+            <form action="/aluno/deletar" method="post">
+                <input type="hidden" name="id" id="id" value={{this.id}}>
+
+                <button type="submit">Deletar</button>
+            </form>
+
+            <form action="/aluno/edicao" method="post">
+                <input type="hidden" name="id" id="id" value={{this.id}}>
+
+                <button type="submit">Editar</button>
+            </form>
+        </div>
+
+    </div>
+    {{/each}}
+
+    <br>
+
+    <a href="/aluno/cadastrar">Cadastrar</a>
+
+</body>
+
+</html>

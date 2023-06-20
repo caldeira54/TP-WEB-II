@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem</title>
+</head>
+
+<body>
+    <h3>Lista de Disciplinas</h3>
+
+    {{#each disciplina}}
+    <div class="container">
+        <div>
+            <p>{{this.nome}}</p>
+            <p>{{this.cargaHoraria}}</p>
+        </div>
+
+        <div>
+            <form action="/disciplina/deletar" method="post">
+                <input type="hidden" name="id" id="id" value={{this.id}}>
+
+                <button type="submit">Deletar</button>
+            </form>
+
+            <form action="/disciplina/edicao" method="post">
+                <input type="hidden" name="id" id="id" value={{this.id}}>
+
+                <button type="submit">Editar</button>
+            </form>
+        </div>
+
+    </div>
+    {{/each}}
+
+    <br>
+
+    <a href="/disciplina/cadastrar">Cadastrar</a>
+
+</body>
+
+</html>
