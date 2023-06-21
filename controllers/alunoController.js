@@ -16,6 +16,11 @@ exports.aluno_cadastrar = asyncHandler(async (req, res, next) => {
 exports.aluno_inserir = asyncHandler(async (req, res, next) => {
     await Aluno.sync();
     console.log(req.body);
-    const aluno = await Aluno.create(req.body);
-    res.redirect('/aluno/listagem');
+
+    
+
+    try{
+        const aluno = await Aluno.create(req.body);
+        res.redirect('/aluno/listagem');
+    } catch(err){}
 });

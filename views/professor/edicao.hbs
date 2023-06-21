@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Escolar</title>
+</head>
+
+<body>
+    <h2>Edição de Professores</h2>
+
+    <form action="/professor/salvar_edicao" method="post">
+        <input type="hidden" name="id" id="id" value={{professor.id}}>
+
+        <label for="nome">Nome</label><br>
+        <input type="text" name="nome" id="nome" value={{professor.nome}}><br>
+
+        <label for="cargaHoraria">Carga Horária</label><br>
+        <input type="text" name="cargaHoraria" id="cargaHoraria" value={{professor.salario}}><br>
+
+        <label for="endereco">Endereço</label><br>
+        <input type="text" name="endereco" id="endereco" value={{professor.endereco}}><br>
+
+        <button>Salvar</button>
+    </form>
+</body>
+
+</html>

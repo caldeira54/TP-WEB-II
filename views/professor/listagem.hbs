@@ -9,23 +9,24 @@
 </head>
 
 <body>
-    <h3>Lista de Disciplinas</h3>
+    <h3>Lista de Professores</h3>
 
-    {{#each disciplina}}
+    {{#each professor}}
     <div class="container">
         <div>
             <p>{{this.nome}}</p>
-            <p>{{this.cargaHoraria}}</p>
+            <p>{{this.salario}}</p>
+            <p>{{this.endereco}}</p>
         </div>
 
         <div>
-            <form action="/disciplina/deletar" method="post">
+            <form action="/professor/deletar" method="post">
                 <input type="hidden" name="id" id="id" value={{this.id}}>
 
                 <button type="submit">Deletar</button>
             </form>
 
-            <form action="/disciplina/edicao" method="post">
+            <form action="/professor/edicao" method="post">
                 <input type="hidden" name="id" id="id" value={{this.id}}>
 
                 <button type="submit">Editar</button>

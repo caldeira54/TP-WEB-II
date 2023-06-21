@@ -1,17 +1,21 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../connection/mysql');
 
-const Usuario = sequelize.define('Usuario', {
-    usuario: {
+const Professor = sequelize.define('Professor', {
+    nome: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    senha: {
+    salario: {
+        type: DataTypes.DOUBLE,
+        allowNull: false
+    },
+    endereco: {
         type: DataTypes.STRING,
         allowNull: false
     }
 }, {
-    tableName: 'Usuario'
+    tableName: 'Professor'
 });
 
-module.exports = Usuario;
+module.exports = Professor;
