@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../connection/mysql');
+const Professor = require('./professor');
 
 const Disciplina = sequelize.define('Disciplina', {
     nome: {
@@ -12,6 +13,11 @@ const Disciplina = sequelize.define('Disciplina', {
     }
 }, {
     tableName: 'Disciplina'
+});
+
+Professor.hasOne(Disciplina, {
+    foreignKey: 'idProfessor',
+    allowNull: false
 });
 
 module.exports = Disciplina;

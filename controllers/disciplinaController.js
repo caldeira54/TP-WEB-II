@@ -3,6 +3,7 @@ const { Sequelize } = require('sequelize');
 const sequelize = require('../connection/mysql');
 const Disciplina = require("../models/disciplina");
 const asyncHandler = require("express-async-handler");
+const Professor = require("../models/professor");
 
 exports.disciplina_lista = asyncHandler(async (req, res, next) => {
     await Disciplina.sync();
@@ -10,7 +11,7 @@ exports.disciplina_lista = asyncHandler(async (req, res, next) => {
 });
 
 exports.disciplina_cadastrar = asyncHandler(async (req, res, next) => {
-    res.render('disciplina/cadastro');
+    res.render('disciplina/cadastro', {professor : await Professor.findAll()});
 });
 
 exports.disciplina_inserir = asyncHandler(async (req, res, next) => {
@@ -19,9 +20,9 @@ exports.disciplina_inserir = asyncHandler(async (req, res, next) => {
     console.log(req.body);
 
     try {
-        const { nome, cargaHoraria } = req.body;
+        const { nome, cargaHoraria, professor } = req.body;
 
-        if (nome && cargaHoraria) {
+        if (nome && cargaHoraria && professor) {
             const disciplina = await Disciplina.create(req.body);
             res.redirect('/disciplina/listagem');
         } else {

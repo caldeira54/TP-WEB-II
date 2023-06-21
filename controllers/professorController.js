@@ -36,7 +36,7 @@ exports.professor_deletar = asyncHandler(async (req, res, next) => {
         const professor = await Professor.findByPk(id);
 
         if (professor) {
-            await professor.destroy({ where: { id } });
+            await Professor.destroy({ where: { id } });
             res.redirect('/professor/listagem');
         } else {
             console.log('Erro ao deletar professor');
@@ -47,7 +47,7 @@ exports.professor_deletar = asyncHandler(async (req, res, next) => {
 });
 
 exports.professor_editando = asyncHandler(async (req, res, next) => {
-    await professor.sync();
+    await Professor.sync();
     const professor = await Professor.findByPk(req.body.id);
 
     if (professor) {
@@ -62,7 +62,7 @@ exports.professor_salvar_edicao = asyncHandler(async (req, res, next) => {
         const { id, nome, salario, endereco } = req.body;
         
         if (id && nome && salario, endereco) {
-            await professor.update({ nome, salario, endereco }, { where: { id } })
+            await Professor.update({ nome, salario, endereco }, { where: { id } })
             res.redirect('/professor/listagem');
         } else {
             console.log('Erro ao editar professor');

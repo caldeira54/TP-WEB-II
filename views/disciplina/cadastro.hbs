@@ -18,6 +18,13 @@
         <label for="cargaHoraria">Carga Horária</label><br>
         <input type="text" name="cargaHoraria" id="cargaHoraria"><br>
 
+        <label for="professor">Professor</label><br>
+        <select name="idProfessor" id="idProfessor">
+            {{#each professor}}
+            <option value="{{this.id}}"> {{this.nome}} </option>
+            {{/each}}
+        </select><br>
+
         <button>Cadastrar</button>
     </form>
 </body>
