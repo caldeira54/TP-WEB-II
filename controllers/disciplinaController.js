@@ -11,13 +11,11 @@ exports.disciplina_lista = asyncHandler(async (req, res, next) => {
 });
 
 exports.disciplina_cadastrar = asyncHandler(async (req, res, next) => {
-    res.render('disciplina/cadastro', {professor : await Professor.findAll()});
+    res.render('disciplina/cadastro', { professor: await Professor.findAll() });
 });
 
 exports.disciplina_inserir = asyncHandler(async (req, res, next) => {
     await Disciplina.sync();
-
-    console.log(req.body);
 
     try {
         const { nome, cargaHoraria, professor } = req.body;
@@ -44,8 +42,8 @@ exports.disciplina_deletar = asyncHandler(async (req, res, next) => {
         } else {
             console.log('Erro ao deletar disciplina');
         }
-    } catch (error) {
-        console.error('Erro ao deletar disciplina:', error);
+    } catch (err) {
+        console.error('Erro ao deletar disciplina:', err);
     }
 });
 
@@ -62,14 +60,14 @@ exports.disciplina_editando = asyncHandler(async (req, res, next) => {
 
 exports.disciplina_salvar_edicao = asyncHandler(async (req, res, next) => {
     try {
-        const { id, nome, cargaHoraria } = req.body;
-        if (id && nome && cargaHoraria) {
-            await Disciplina.update({ nome, cargaHoraria }, { where: { id } })
+        const { id, nome, cargaHoraria, professor } = req.body;
+        if (id && nome && cargaHoraria && professor) {
+            await Disciplina.update({ nome, cargaHoraria, idProfessor }, { where: { id } })
             res.redirect('/disciplina/listagem');
         } else {
             console.log('Erro ao editar disciplina');
         }
-    } catch (error) {
-        console.error('Erro ao editar disciplina:', error);
+    } catch (err) {
+        console.error('Erro ao editar disciplina:', err);
     }
 });

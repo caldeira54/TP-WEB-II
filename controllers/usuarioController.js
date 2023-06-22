@@ -15,6 +15,17 @@ exports.usuario_cadastrar = asyncHandler(async (req, res, next) => {
 
 exports.usuario_inserir = asyncHandler(async (req, res, next) => {
     await Usuario.sync();
-    const usuario = await Usuario.create(req.body);
-    res.redirect('./usuario');
+
+    try {
+        const { nome, senha } = req.body;
+
+        if (nome && senha) {
+            const usuario = await Usuario.create(req.body);
+            res.redirect('./usuario');
+        } else {
+            console.log("Erro ao inserir usuário");
+        }
+    } catch (err) {
+        console.error("Erro ao inserir disciplina: ", err);
+    }
 });

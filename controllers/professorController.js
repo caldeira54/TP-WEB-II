@@ -60,7 +60,7 @@ exports.professor_editando = asyncHandler(async (req, res, next) => {
 exports.professor_salvar_edicao = asyncHandler(async (req, res, next) => {
     try {
         const { id, nome, salario, endereco } = req.body;
-        
+
         if (id && nome && salario, endereco) {
             await Professor.update({ nome, salario, endereco }, { where: { id } })
             res.redirect('/professor/listagem');

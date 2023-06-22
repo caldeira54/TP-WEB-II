@@ -3,7 +3,7 @@ const hbs = require('hbs');
 const path = require('path');
 const bp = require('body-parser');
 
-// const aluno = require('./routes/aluno');
+const aluno = require('./routes/aluno');
 const disciplina = require('./routes/disciplina');
 const professor = require('./routes/professor');
 
@@ -18,7 +18,7 @@ app.set("views", path.join(__dirname, "./views"));
 const staticPath = path.join(__dirname, 'public');
 app.use(express.static(staticPath));
 
-// app.use('/aluno', aluno);
+app.use('/aluno', aluno);
 app.use('/disciplina', disciplina);
 app.use('/professor', professor);
 

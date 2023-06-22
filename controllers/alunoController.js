@@ -15,12 +15,59 @@ exports.aluno_cadastrar = asyncHandler(async (req, res, next) => {
 
 exports.aluno_inserir = asyncHandler(async (req, res, next) => {
     await Aluno.sync();
-    console.log(req.body);
 
-    
+    try {
+        const { nome, idade, endereco, disciplina } = req.body;
 
-    try{
-        const aluno = await Aluno.create(req.body);
-        res.redirect('/aluno/listagem');
-    } catch(err){}
+        if (nome && idade && endereco && disciplina) {
+            const aluno = await Aluno.create(req.body);
+            res.redirect('/aluno/listagem');
+        } else {
+            console.log("Erro ao inserir aluno");
+        }
+    } catch (err) {
+        console.error("Erro ao inserir aluno", err);
+    }
+});
+
+exports.aluno_deletar = asyncHandler(async (req, res, next) => {
+    try {
+        const { id } = req.body;
+        const aluno = await Aluno.findByPk(id);
+
+        if (aluno) {
+            await Aluno.destroy({ where: { id } });
+            res.redirect('/aluno/listagem');
+        } else {
+            console.log('Erro ao deletar aluno');
+        }
+    } catch (err) {
+        console.error('Erro ao deletar aluno:', err);
+    }
+});
+
+exports.aluno_editando = asyncHandler(async (req, res, next) => {
+    await Aluno.sync();
+    const aluno = await Aluno.findByPk(req.body.id);
+
+    if (aluno) {
+        res.render('aluno/edicao', { aluno: aluno.dataValues });
+    } else {
+        res.render('aluno/listagem');
+    }
+});
+
+exports.aluno_salvar_edicao = asyncHandler(async (req, res, next) => {
+    try {
+        const { id, nome, idade, endereco, disciplina } = req.body;
+
+        if (id && nome && idade && endereco && disciplina) {
+            await Aluno.update({ nome, idade, endereco, disciplina }, { where: { id } })
+            res.redirect('/aluno/listagem');
+        } else {
+            console.log('Erro ao editar aluno');
+        }
+    } catch (err) {
+        console.error('Erro ao editar aluno:', err);
+    }
 });
