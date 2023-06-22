@@ -18,9 +18,10 @@ exports.disciplina_inserir = asyncHandler(async (req, res, next) => {
     await Disciplina.sync();
 
     try {
-        const { nome, cargaHoraria, professor } = req.body;
+        console.log(req.body);
+        const { nome, cargaHoraria, idProfessor } = req.body;
 
-        if (nome && cargaHoraria && professor) {
+        if (nome && cargaHoraria && idProfessor) {
             const disciplina = await Disciplina.create(req.body);
             res.redirect('/disciplina/listagem');
         } else {
@@ -50,9 +51,23 @@ exports.disciplina_deletar = asyncHandler(async (req, res, next) => {
 exports.disciplina_editando = asyncHandler(async (req, res, next) => {
     await Disciplina.sync();
     const disciplina = await Disciplina.findByPk(req.body.id);
+    let listaProfessores = await Professor.findAll();
+    let listaEditado = [];
+
+    for (let i = 0; i < listaProfessores.length; i++) {
+        listaEditado[i] = listaProfessores[i].dataValues;
+
+        if (listaEditado[i].id == disciplina.idProfessor) {
+            listaEditado[i].marcado = true;
+        } else {
+            listaEditado[i].marcado = false;
+        }
+    }
+
+    console.log(listaEditado);
 
     if (disciplina) {
-        res.render('disciplina/edicao', { disciplina: disciplina.dataValues });
+        res.render('disciplina/edicao', { disciplina: disciplina.dataValues, professores: listaEditado });
     } else {
         res.render('disciplina/listagem');
     }
@@ -60,8 +75,8 @@ exports.disciplina_editando = asyncHandler(async (req, res, next) => {
 
 exports.disciplina_salvar_edicao = asyncHandler(async (req, res, next) => {
     try {
-        const { id, nome, cargaHoraria, professor } = req.body;
-        if (id && nome && cargaHoraria && professor) {
+        const { id, nome, cargaHoraria, idProfessor } = req.body;
+        if (id && nome && cargaHoraria && idProfessor) {
             await Disciplina.update({ nome, cargaHoraria, idProfessor }, { where: { id } })
             res.redirect('/disciplina/listagem');
         } else {

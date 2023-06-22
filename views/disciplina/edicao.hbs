@@ -22,8 +22,8 @@
 
         <label for="professor">Professor</label><br>
         <select name="idProfessor" id="idProfessor">
-            {{#each professor}}
-            <option value="{{ this.id }}"> {{ this.nome }} </option>
+            {{#each professores}}
+            <option {{#if this.marcado}} selected {{/if}} value="{{ this.id }}"> {{ this.nome }} </option>
             {{/each}}
         </select><br>
 

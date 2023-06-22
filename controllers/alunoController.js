@@ -17,9 +17,9 @@ exports.aluno_inserir = asyncHandler(async (req, res, next) => {
     await Aluno.sync();
 
     try {
-        const { nome, idade, endereco, disciplina } = req.body;
+        const { nome, idade, endereco, idDisciplina } = req.body;
 
-        if (nome && idade && endereco && disciplina) {
+        if (nome && idade && endereco && idDisciplina) {
             const aluno = await Aluno.create(req.body);
             res.redirect('/aluno/listagem');
         } else {
@@ -59,10 +59,10 @@ exports.aluno_editando = asyncHandler(async (req, res, next) => {
 
 exports.aluno_salvar_edicao = asyncHandler(async (req, res, next) => {
     try {
-        const { id, nome, idade, endereco, disciplina } = req.body;
+        const { id, nome, idade, endereco, idDisciplina } = req.body;
 
-        if (id && nome && idade && endereco && disciplina) {
-            await Aluno.update({ nome, idade, endereco, disciplina }, { where: { id } })
+        if (id && nome && idade && endereco && idDisciplina) {
+            await Aluno.update({ nome, idade, endereco, idDisciplina }, { where: { id } })
             res.redirect('/aluno/listagem');
         } else {
             console.log('Erro ao editar aluno');
