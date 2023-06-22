@@ -23,6 +23,13 @@
         <label for="endereco">Endereço</label><br>
         <input type="text" name="endereco" id="endereco" value={{aluno.endereco}}><br>
 
+        <label for="disciplina">Disciplina</label><br>
+        <select name="idDisciplina" id="idDisciplina">
+            {{#each disciplinas}}
+            <option {{#if this.marcado}} selected {{/if}} value="{{ this.id }}"> {{ this.nome }} </option>
+            {{/each}}
+        </select><br>
+
         <button>Salvar</button>
     </form>
 </body>

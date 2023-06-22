@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listagem</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <title>Sistema Escolar</title>
 </head>
 
 <body>
-    <h3>Lista de Professores</h3>
+    <h1 class="card-header text-center">Lista de Professores</h1>
 
     {{#each professor}}
     <div class="container">
@@ -39,7 +40,7 @@
     <br>
 
     <a href="/professor/digitar">Cadastrar</a>
-
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>

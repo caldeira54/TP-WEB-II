@@ -2,6 +2,7 @@ const { text } = require("body-parser");
 const { Sequelize } = require('sequelize');
 const sequelize = require('../connection/mysql');
 const Aluno = require("../models/aluno");
+const Disciplina = require("../models/disciplina");
 const asyncHandler = require("express-async-handler");
 
 exports.aluno_lista = asyncHandler(async (req, res, next) => {
@@ -10,7 +11,7 @@ exports.aluno_lista = asyncHandler(async (req, res, next) => {
 });
 
 exports.aluno_cadastrar = asyncHandler(async (req, res, next) => {
-    res.render('aluno/cadastro');
+    res.render('aluno/cadastro', { disciplina: await Disciplina.findAll()} );
 });
 
 exports.aluno_inserir = asyncHandler(async (req, res, next) => {
@@ -49,9 +50,21 @@ exports.aluno_deletar = asyncHandler(async (req, res, next) => {
 exports.aluno_editando = asyncHandler(async (req, res, next) => {
     await Aluno.sync();
     const aluno = await Aluno.findByPk(req.body.id);
+    let listaDisciplinas = await Disciplina.findAll();
+    let listaEditado = [];
+
+    for (let i = 0; i < listaDisciplinas.length; i++) {
+        listaEditado[i] = listaDisciplinas[i].dataValues;
+
+        if (listaEditado[i].id == aluno.idDisciplina) {
+            listaEditado[i].marcado = true;
+        } else {
+            listaEditado[i].marcado = false;
+        }
+    }
 
     if (aluno) {
-        res.render('aluno/edicao', { aluno: aluno.dataValues });
+        res.render('aluno/edicao', { aluno: aluno.dataValues, disciplinas: listaEditado });
     } else {
         res.render('aluno/listagem');
     }
