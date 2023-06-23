@@ -5,33 +5,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edição de Alunos</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>Sistema Escolar</title>
 </head>
 
-<body>
-    <h2>Edição de Alunos</h2>
+<body class="body">
+    <div class="container-fluid text-center" style="width: 36rem;">
+        <div class="card">
+            <h1 class="card-header text-center">Edição de Aluno</h1>
 
-    <form action="/aluno/salvar_edicao" method="post">
-        <input type="hidden" name="id" id="id" value={{aluno.id}}>
+            <form action="/aluno/salvar_edicao" method="post" class="row justify-content-md-center"
+                style="padding-top: 10px;">
+                <input type="hidden" name="id" id="id" value={{aluno.id}}>
 
-        <label for="nome">Nome</label><br>
-        <input type="text" name="nome" id="nome" value={{aluno.nome}}><br>
+                <label for="nome" class="col-sm-4 col-form-label">Nome</label><br>
+                <div class="col-sm-5">
+                    <input class="form-control mb-3" type="text" name="nome" id="nome" value={{aluno.nome}}><br>
+                </div>
 
-        <label for="idade">Idade</label><br>
-        <input type="text" name="idade" id="idade" value={{aluno.idade}}><br>
+                <label for="idade" class="col-sm-4 col-form-label">Idade</label><br>
+                <div class="col-sm-5">
+                    <input class="form-control mb-3" type="text" name="idade" id="idade" value={{aluno.idade}}><br>
+                </div>
 
-        <label for="endereco">Endereço</label><br>
-        <input type="text" name="endereco" id="endereco" value={{aluno.endereco}}><br>
+                <label for="endereco" class="col-sm-4 col-form-label">Endereço</label><br>
+                <div class="col-sm-5">
+                    <input class="form-control mb-3" type="text" name="endereco" id="endereco"
+                        value={{aluno.endereco}}><br>
+                </div>
 
-        <label for="disciplina">Disciplina</label><br>
-        <select name="idDisciplina" id="idDisciplina">
-            {{#each disciplinas}}
-            <option {{#if this.marcado}} selected {{/if}} value="{{ this.id }}"> {{ this.nome }} </option>
-            {{/each}}
-        </select><br>
+                <label for="disciplina" class="col-sm-4 col-form-label">Disciplina</label><br>
+                <div class="col-sm-5">
+                    <select class="form-select mb-3" name="idDisciplina" id="idDisciplina">
+                        {{#each disciplinas}}
+                        <option {{#if this.marcado}} selected {{/if}} value="{{ this.id }}"> {{ this.nome }} </option>
+                        {{/each}}
+                    </select><br>
+                </div>
 
-        <button>Salvar</button>
-    </form>
+                <div class="col-5 text-center">
+                    <button class="btn btn-outline-success" style="margin: 2rem 2rem;">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>
