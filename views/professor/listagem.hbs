@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/estilo.css">
     <title>Sistema Escolar</title>
 </head>
 
@@ -13,33 +14,41 @@
     <h1 class="card-header text-center">Lista de Professores</h1>
 
     {{#each professor}}
-    <div class="container">
-        <div>
-            <p>{{this.nome}}</p>
-            <p>{{this.salario}}</p>
-            <p>{{this.endereco}}</p>
-        </div>
+    <table class="table">
+        <tr>
+            <th>Nome</th>
+            <th>Salário</th>
+            <th>Endereço</th>
+            <th>Excluir</th>
+            <th>Editar</th>
+        </tr>
 
-        <div>
+        <td>{{this.nome}}</td>
+        <td>{{this.salario}}</td>
+        <td>{{this.endereco}}</td>
+        <td>
             <form action="/professor/deletar" method="post">
                 <input type="hidden" name="id" id="id" value={{this.id}}>
 
-                <button type="submit">Deletar</button>
+                <button type="submit" class="excluir"><img src="/img/apagar.png"></button>
             </form>
-
+        </td>
+        <td>
             <form action="/professor/edicao" method="post">
                 <input type="hidden" name="id" id="id" value={{this.id}}>
 
-                <button type="submit">Editar</button>
+                <button type="submit"><img src="/img/editar.png"></button>
             </form>
-        </div>
-
-    </div>
+        </td>
+    </table>
     {{/each}}
 
     <br>
 
-    <a href="/professor/digitar">Cadastrar</a>
+    <form action="/professor/digitar">
+        <button type="submit">Cadastrar</button>
+    </form>
+
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 
