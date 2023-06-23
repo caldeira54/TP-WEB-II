@@ -1,8 +1,6 @@
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.body {
     background-color: #d3d3e7;
+    margin-top: 1rem;
 }
 
 table {
