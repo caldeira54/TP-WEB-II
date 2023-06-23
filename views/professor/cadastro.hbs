@@ -5,24 +5,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alunos</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>Sistema Escolar</title>
 </head>
 
-<body>
-    <h2>Cadastro de Professor</h2>
+<body class="body">
+    <div class="container-fluid text-center" style="width: 36rem;">
+        <div class="card">
+            <h1 class="card-header text-center">Cadastro de Professor</h1>
 
-    <form action="/professor/inserir" method="post">
-        <label for="nome">Nome</label><br>
-        <input type="text" name="nome" id="nome"><br>
+            <form action="/professor/inserir" method="post" class="row justify-content-md-center"
+                style="padding-top: 10px;">
+                <label for="nome" class="col-sm-4 col-form-label">Nome</label><br>
+                <div class="col-sm-5">
+                    <input type="text" name="nome" id="nome" class="form-control mb-3"><br>
+                </div>
 
-        <label for="salario">Salário</label><br>
-        <input type="text" name="salario" id="salario"><br>
+                <label for="salario" class="col-sm-4 col-form-label">Salário</label><br>
+                <div class="col-sm-5">
+                    <input type="text" name="salario" id="salario" class="form-control mb-3"><br>
+                </div>
 
-        <label for="endereco">Endereço</label><br>
-        <input type="text" name="endereco" id="endereco"><br>
+                <label for="endereco" class="col-sm-4 col-form-label">Endereço</label><br>
+                <div class="col-sm-5">
+                    <input type="text" name="endereco" id="endereco" class="form-control mb-3"><br>
+                </div>
 
-        <button>Cadastrar</button>
-    </form>
+                <div class="col-sm-5">
+                    <button class="btn btn-outline-success" style="margin: 2rem 2rem;">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+        </script>
 </body>
 
 </html>
