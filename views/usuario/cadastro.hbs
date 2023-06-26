@@ -5,22 +5,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/estilo.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>Sistema Escolar</title>
 </head>
 
-<body>
+<body class="body">
+    <div class="container-fluid text-center" style="width: 36rem;">
+        <div class="card">
+            <h1 class="card-header text-center">Cadastro de Usuário</h1>
 
-    <h3>Cadastro de Usuário</h3>
+            <form action="/usuario/inserir" method="post" class="row justify-content-md-center"
+                style="padding-top: 10px;">
+                <label for="usuario" class="col-sm-4 col-form-label">Usuário</label><br>
+                <div class="col-sm-5">
+                    <input type="text" name="usuario" id="usuario"><br>
+                </div>
 
-    <form action="/usuario/inserir" method="post">
-        <label for="usuario">Usuário</label><br>
-        <input type="text" name="usuario" id="usuario"><br>
+                <label for="senha" class="col-sm-4 col-form-label">Senha</label><br>
+                <div class="col-sm-5">
+                    <input type="text" name="senha" id="senha"><br>
+                </div>
 
-        <label for="senha">Senha</label><br>
-        <input type="text" name="senha" id="senha"><br>
-        
-        <button>Cadastrar</button>
-    </form>
+                <div class="col-sm-5">
+                    <button class="btn btn-outline-success" style="margin: 2rem 2rem;">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+        </script>
 </body>
 
 </html>
