@@ -20,7 +20,7 @@
                     <th>Nome</th>
                     <th>Idade</th>
                     <th>Endereço</th>
-                    <th>Disciplinas</th>
+                    <th>Matéria</th>
                     <th>Excluir</th>
                     <th>Editar</th>
                 </tr>
@@ -29,14 +29,15 @@
                     <td>{{this.nome}}</td>
                     <td>{{this.idade}}</td>
                     <td>{{this.endereco}}</td>
+                    <td>{{this.materia}}</td>
                     {{!-- <td>{{this.idDisciplina}}</td> --}}
-                    <td>
+                    {{!-- <td>
                         <form action="/cursando/listagem" method="get">
                             <input type="hidden" name="id" id="id" value={{this.id}}>
 
                             <button type="submit" class="btn btn-info"><img src="/img/lista.png" width="25"></button>
                         </form>
-                    </td>
+                    </td> --}}
                     <td>
                         <form action="/aluno/deletar" method="post">
                             <input type="hidden" name="id" id="id" value={{this.id}}>
