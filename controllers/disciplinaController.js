@@ -31,9 +31,9 @@ exports.disciplina_inserir = asyncHandler(async (req, res, next) => {
 
     try {
         console.log(req.body);
-        const { nome, cargaHoraria, idProfessor } = req.body;
+        const { materia, cargaHoraria, idProfessor } = req.body;
 
-        if (nome && cargaHoraria && idProfessor) {
+        if (materia && cargaHoraria && idProfessor) {
             const disciplina = await Disciplina.create(req.body);
             res.redirect('/disciplina/listagem');
         } else {
@@ -87,9 +87,9 @@ exports.disciplina_editando = asyncHandler(async (req, res, next) => {
 
 exports.disciplina_salvar_edicao = asyncHandler(async (req, res, next) => {
     try {
-        const { id, nome, cargaHoraria, idProfessor } = req.body;
-        if (id && nome && cargaHoraria && idProfessor) {
-            await Disciplina.update({ nome, cargaHoraria, idProfessor }, { where: { id } })
+        const { id, materia, cargaHoraria, idProfessor } = req.body;
+        if (id && materia && cargaHoraria && idProfessor) {
+            await Disciplina.update({ materia, cargaHoraria, idProfessor }, { where: { id } })
             res.redirect('/disciplina/listagem');
         } else {
             console.log('Erro ao editar disciplina');

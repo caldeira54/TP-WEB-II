@@ -27,9 +27,9 @@
 
                 {{#each disciplina}}
                 <tr>
-                    <td>{{this.nome}}</td>
+                    <td>{{this.materia}}</td>
                     <td>{{this.cargaHoraria}}</td>
-                    <td>{{this.idProfessor}}</td>
+                    <td>{{this.nome}}</td>
                     <td>
                         <form action="/disciplina/deletar" method="post">
                             <input type="hidden" name="id" id="id" value={{this.id}}>

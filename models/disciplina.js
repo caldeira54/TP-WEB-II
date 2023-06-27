@@ -3,7 +3,7 @@ const sequelize = require('../connection/mysql');
 const Professor = require('./professor');
 
 const Disciplina = sequelize.define('Disciplina', {
-    nome: {
+    materia: {
         type: DataTypes.STRING,
         allowNull: false
     },
