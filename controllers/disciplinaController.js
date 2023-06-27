@@ -6,9 +6,6 @@ const asyncHandler = require("express-async-handler");
 const Professor = require("../models/professor");
 
 exports.disciplina_lista = asyncHandler(async (req, res, next) => {
-    // await Disciplina.sync();
-    // res.render('disciplina/listagem', { disciplina: await Disciplina.findAll() });
-
     await Disciplina.sync();
     await Professor.sync();
 

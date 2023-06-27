@@ -8,6 +8,7 @@ const aluno = require('./routes/aluno');
 const disciplina = require('./routes/disciplina');
 const professor = require('./routes/professor');
 const usuario = require('./routes/usuario');
+const cursando = require('./routes/cursando');
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use('/aluno', aluno);
 app.use('/disciplina', disciplina);
 app.use('/professor', professor);
 app.use('/usuario', usuario);
+app.use('/cursando', cursando);
 
 app.get('/', (req, res) => {
   res.render('usuario/login');

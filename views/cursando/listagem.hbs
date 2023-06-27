@@ -17,27 +17,18 @@
             <h1 class="card-header text-center">Lista de Alunos</h1>
             <table class="table">
                 <tr>
-                    <th>Nome</th>
-                    <th>Idade</th>
-                    <th>Endereço</th>
-                    <th>Disciplinas</th>
-                    <th>Excluir</th>
-                    <th>Editar</th>
+                    <th>Data</th>
+                    <th>Aluno</th>
+                    <th>Disciplina</th>
+                    {{!-- <th>Excluir</th>
+                    <th>Editar</th> --}}
                 </tr>
-                {{#each aluno}}
+                {{#each cursando}}
                 <tr>
+                    <td>{{this.data}}</td>
                     <td>{{this.nome}}</td>
-                    <td>{{this.idade}}</td>
-                    <td>{{this.endereco}}</td>
-                    {{!-- <td>{{this.idDisciplina}}</td> --}}
-                    <td>
-                        <form action="/cursando/listagem" method="get">
-                            <input type="hidden" name="id" id="id" value={{this.id}}>
-
-                            <button type="submit" class="btn btn-info"><img src="/img/lista.png" width="25"></button>
-                        </form>
-                    </td>
-                    <td>
+                    <td>{{this.materia}}</td>
+                    {{!-- <td>
                         <form action="/aluno/deletar" method="post">
                             <input type="hidden" name="id" id="id" value={{this.id}}>
 
@@ -51,12 +42,12 @@
                             <button type="submit" class="btn btn-warning"><img src="/img/editar.png"
                                     width="25"></button>
                         </form>
-                    </td>
+                    </td> --}}
                 </tr>
                 {{/each}}
             </table>
 
-            <div class="row justify-content-md-center mb-4">
+            {{!-- <div class="row justify-content-md-center mb-4">
                 <form action="/aluno/digitar" class="col-5 text-center">
                     <button type="submit" class="btn btn-outline-dark">Cadastrar</button>
                 </form>
@@ -64,7 +55,7 @@
                 <form action="/usuario/inicio" class="col-5 text-center">
                     <button type="submit" class="btn btn-outline-dark">Início</button>
                 </form>
-            </div>
+            </div> --}}
         </div>
     </div>
 
