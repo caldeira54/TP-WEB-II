@@ -27,17 +27,9 @@ app.use('/disciplina', disciplina);
 app.use('/professor', professor);
 app.use('/usuario', usuario);
 
-app.post('/', (req, res) => {
-  res.render('usuario/login');
-});
-
 app.get('/', (req, res) => {
   res.render('usuario/login');
 });
-
-// app.get('/usuario/digitar', (req, res) => {
-//   res.render('usuario/login');
-// });
 
 app.listen(3000, () => {
   console.log('Server rodando');
