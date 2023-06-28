@@ -7,16 +7,18 @@ const Professor = require("../models/professor");
 
 exports.disciplina_lista = asyncHandler(async (req, res, next) => {
     await Disciplina.sync();
-    await Professor.sync();
+    res.render('disciplina/listagem', { disciplina: await Disciplina.findAll() });
+    // await Disciplina.sync();
+    // await Professor.sync();
 
-    sequelize.query('select * from disciplina as d inner join professor as p on d.idProfessor = p.id;', {
-        type: Sequelize.QueryTypes.SELECT,
-    }).then((disciplina) => {
-        res.render('disciplina/listagem', { disciplina: disciplina });
-        console.log(disciplina);
-    }).catch((error) => {
-        console.error(error);
-    });
+    // sequelize.query('select * from disciplina as d inner join professor as p on d.idProfessor = p.id;', {
+    //     type: Sequelize.QueryTypes.SELECT,
+    // }).then((disciplina) => {
+    //     res.render('disciplina/listagem', { disciplina: disciplina });
+    //     console.log(disciplina);
+    // }).catch((error) => {
+    //     console.error(error);
+    // });
 });
 
 exports.disciplina_cadastrar = asyncHandler(async (req, res, next) => {

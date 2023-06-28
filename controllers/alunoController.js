@@ -8,6 +8,17 @@ const asyncHandler = require("express-async-handler");
 exports.aluno_lista = asyncHandler(async (req, res, next) => {
     await Aluno.sync();
     res.render('aluno/listagem', { aluno: await Aluno.findAll() });
+    // await Disciplina.sync();
+    // await Aluno.sync();
+
+    // sequelize.query('select * from aluno as a inner join disciplina as d on a.idDisciplina = d.id;', {
+    //     type: Sequelize.QueryTypes.SELECT,
+    // }).then((aluno) => {
+    //     res.render('aluno/listagem', { aluno: aluno });
+    //     console.log(aluno);
+    // }).catch((error) => {
+    //     console.error(error);
+    // });
 });
 
 exports.aluno_cadastrar = asyncHandler(async (req, res, next) => {

@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../connection/mysql');
 const Professor = require('./professor');
+const Aluno = require('./aluno');
 
 const Disciplina = sequelize.define('Disciplina', {
     materia: {
